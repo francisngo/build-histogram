@@ -7,7 +7,6 @@ function buildObjectBySeenCount(list) {
 		if (!result[item]) {
 			result[item] = 0;
 		}
-
 		result[item] += 1;
 	});
 
@@ -26,11 +25,14 @@ function buildHistogram() {
 
 		if (leftAxisValues.indexOf(val) === -1) {
 			leftAxisValues.push(val);
-			const keyElement = document.createElement("div");
-			keyElement.textContent = val;
-			leftAxis.append(keyElement);
 		}
 	}
+
+	leftAxisValues.forEach((item) => {
+		const leftAxisElement = document.createElement("div");
+		leftAxisElement.textContent = item;
+		leftAxis.append(leftAxisElement);
+	});
 
 	for (const key in data) {
 		const val = data[key];
